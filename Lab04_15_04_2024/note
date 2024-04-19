@@ -1,0 +1,57 @@
+2.1. Sử dụng Composer
+2.2. Coding Convention
+    - 3 quy tắc cho coding convention:
+        + Tuân thủ chuẩn quy định của ngôn ngữ: Đảm bảo mã nguồn tuân thủ các quy tắc về đặt tên biến, hằng số, và cấu trúc mã của ngôn ngữ lập trình cụ thể.
+        + Đảm bảo sự nhất quán: Mã nguồn nên được viết theo một cách nhất quán, đồng nhất về cú pháp và phong cách.
+        + Chú thích và tài liệu: Mã nguồn cần được chú thích rõ ràng, cung cấp tài liệu đầy đủ để người khác có thể hiểu và sử dụng.
+
+    - Các chuẩn PSR:
+
+2.3. Session, Cookie
+    - Sự khác nhau giữa Session và Cookie:
+        + Session: Dữ liệu session được lưu trữ trên máy chủ và được quản lý bởi máy chủ. Một session được tạo ra cho mỗi phiên làm việc của người dùng và thường được sử dụng để lưu trữ thông tin đăng nhập, giỏ hàng, v.v.
+        + Cookie: Cookie là các tệp văn bản nhỏ được lưu trữ trên máy tính của người dùng. Chúng được sử dụng để lưu trữ thông tin định danh, thông tin phiên, và các cài đặt trang web khác.
+    - Phân biệt ưu nhược điểm của Session và Cookie:
+        + Ưu điểm của Session:
+            An toàn hơn vì dữ liệu được lưu trữ trên máy chủ.
+            Dữ liệu session không lưu trên máy tính của người dùng, giúp bảo mật hơn.
+        + Nhược điểm của Session:
+            Yêu cầu tài nguyên máy chủ để lưu trữ dữ liệu session.
+            Dữ liệu session có thể mất khi phiên làm việc kết thúc.
+        - Ưu điểm của Cookie:
+            Dễ dàng triển khai và sử dụng.
+            Dữ liệu có thể lưu trữ trong thời gian dài.
+        - Nhược điểm của Cookie:
+            Dễ bị hack vì dữ liệu được lưu trữ trên máy tính của người dùng.
+            Có thể bị giả mạo và sử dụng để thực hiện các cuộc tấn công.
+    - Ứng dụng thực tế:
+        + Sử dụng Session cho các thông tin nhạy cảm như thông tin đăng nhập.
+        + Sử dụng Cookie cho các thông tin lưu trữ như ngôn ngữ được chọn, thiết lập cá nhân hóa, v.v.
+
+2.4. Error, Exception
+    - die :
+        <?php
+        $number = -5;
+        if ($number < 0) {
+            die("Giá trị của biến không thể âm.");
+        }
+
+        echo "Chương trình vẫn tiếp tục thực hiện sau khi kiểm tra lỗi.";
+
+
+    - try catch :
+        <?php
+        function divide($numerator, $denominator) {
+            if ($denominator == 0) {
+                throw new Exception("Mẫu số không thể là 0.");
+            }
+            return $numerator / $denominator;
+        }
+
+        try {
+            $result = divide(10, 0);
+            echo "Kết quả là: $result";
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+        }
+
